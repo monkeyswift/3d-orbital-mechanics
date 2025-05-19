@@ -1,0 +1,9 @@
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\bevy_derive-7b03457f994254c7.dll: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\app_plugin.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\bevy_main.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\derefs.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\enum_variant_meta.rs
+
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\bevy_derive-7b03457f994254c7.d: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\app_plugin.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\bevy_main.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\derefs.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\enum_variant_meta.rs
+
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\lib.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\app_plugin.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\bevy_main.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\derefs.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_derive-0.14.2\src\enum_variant_meta.rs:
