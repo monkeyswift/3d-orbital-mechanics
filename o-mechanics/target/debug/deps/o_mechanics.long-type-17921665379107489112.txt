@@ -1,0 +1,1 @@
+bevy::prelude::Query<'_, '_, (&bevy::prelude::Transform, &bevy::prelude::Entity, &Velocity, &Acceleration, &Mass), bevy::prelude::With<Movable>>

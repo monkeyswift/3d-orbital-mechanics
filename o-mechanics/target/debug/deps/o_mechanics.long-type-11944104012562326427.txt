@@ -1,0 +1,1 @@
+for<'a, 'b, 'c, 'd, 'e, 'f, 'g> fn(bevy::prelude::Query<'a, 'b, (&'c mut bevy::prelude::Transform, &'d bevy::prelude::Entity, &'e mut Velocity, &'f mut Acceleration, &'g Mass), bevy::prelude::With<Movable>>) {planet_logic::planet_update}
