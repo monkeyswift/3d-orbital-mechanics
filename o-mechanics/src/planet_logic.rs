@@ -1,12 +1,11 @@
 use bevy::prelude::*;
-use bevy::math::prelude::*;
+use bevy::pbr::*;
 
 static GRAVITATIONAL_CONSTANT: f32 = 6.67430e-11;
 static STEP_SIZE: f32 = 1.0/160.0;
 
-
 #[derive(Component)]
-pub struct Mass(f32);
+pub struct Movable;
 
 #[derive(Component)]
 pub struct Velocity(Vec3);
@@ -15,13 +14,10 @@ pub struct Velocity(Vec3);
 pub struct Acceleration(Vec3);
 
 #[derive(Component)]
-pub struct Movable;
+pub struct Mass(f32);
 
-#[derive(Component)]
-pub struct Focused; //This component exists purely to comply
-//with borrowing rules enforced by bevy and rust. I can't safely
-//access a query from two points at the same time unless I use
-//filters that help me break up the query into disjoint subsets.
+
+//I may make a dedicated planet spawning function later, maybe a function that works with console commands so it can be done runtime.
 
 pub fn planet_setup(
     mut commands: Commands,
@@ -33,29 +29,34 @@ pub fn planet_setup(
     let sphere_mesh = meshes.add(sphere.mesh().uv(32, 18));
 
     commands.spawn((
-        PbrBundle {
-        mesh: sphere_mesh.clone(),
-        material: materials.add(StandardMaterial {
-            base_color: Color::srgb(0.3, 0.5, 0.9),
-            ..default()
-        }),
-        transform: Transform::from_xyz(0.0, 0.0, 0.0),
-        ..default()},
-    Movable,
-    Velocity(Vec3::ZERO),
+        Mesh3d(meshes.add(sphere.clone())),
+        MeshMaterial3d(materials.add(StandardMaterial {
+            base_color: Srgba::hex("#D97706").unwrap().into(),
+            metallic: 1.0,
+            perceptual_roughness: 0.0,
+            ..StandardMaterial::default()
+        })),
+        Transform::from_xyz(0.0, 0.0, 0.0),
+        Movable,
+        Velocity(Vec3::ZERO),
+        Acceleration(Vec3::ZERO),
+        Mass(1.0e11),
     ));
 
     commands.spawn((
-        PbrBundle {
-        mesh: sphere_mesh,
-        material: materials.add(StandardMaterial {
-            base_color: Color::srgb(0.5, 0.3, 0.9),
-            ..default()
-        }),
-        transform: Transform::from_xyz(3.0, 0.0, 0.0),
-        ..default()},
+        Mesh3d(meshes.add(sphere.clone())),
+        MeshMaterial3d(materials.add(StandardMaterial {
+            base_color: Srgba::hex("#ffd891").unwrap().into(),
+            metallic: 1.0,
+            perceptual_roughness: 0.0,
+            ..StandardMaterial::default()
+        })),
+    Transform::from_xyz(8.0, 0.0, 0.0),
+    //Visibility::default(),
     Movable,
-    Velocity(Vec3::ZERO)
+    Velocity(Vec3::ZERO),
+    Acceleration(Vec3::ZERO),
+    Mass(1.0e11),
     ));
 }
 
@@ -63,65 +64,48 @@ pub fn planet_setup(
 //concept, so I'm not concerned too much with accuracy
 //as I will be replacing this with a symplectic integrator.
 
-pub fn planet_update(mut parameters: ParamSet<(
-    mut mutable_query:
-    Query<(&mut Transform,
-    Entity,
-    &mut Velocity,
-    &mut Acceleration,
-    &Mass),
-    With<Movable>>,
-    Query<(&Transform,
-    Entity,
-    &Velocity, // should probably not be including these velocities.
-    &Acceleration,
-    &Mass),
-    With<Movable>,
-    >)
-    ) {
+/*
+I collect all the data from every planet entity, store it in a seperate vector, run operations on that vector in order to implement the numerical method,
+and imprint the results back onto the entities. This is necessary because the structuring of the queries can't be duplicated and rust's borrow checker prevents
+a mutable and immutable borrow from occuring at the same time. Queries don't support indexing either which is why this structure is necessary.
+*/
 
-        for (this_transform, 
-            this_entity, 
-            this_velocity, 
-            this_acceleration
-            this_mass
-        ) in parameters.p0().iter_mut()
-        {
-            for (other_transform,
-                other_entity,
-                other_velocity,
-                other_acceleration,
-                other_mass
-            ) in parameters.p1().iter()
-            {
-                let distance = other_transform.translation - this_transform.translation;
-                let force = GRAVITATIONAL_CONSTANT * (this_mass.0 * other_mass.0)/(distance.length_squared());
-                *this_acceleration = Acceleration(distance.normalize() * force/ this_mass.0);
-                //I know multiplying and dividing by mass is redundant, just keeping it for clarity.
-                *this_velocity = Velocity(this_velocity.0 + STEP_SIZE * this_acceleration.0);
-            }
-        }
-
-    //after the nested loop velocity update I do the 
-    //position update:
-    for (mut transform, _entity, velocity, acceleration, _mass) in mutable_query.iter_mut()
-    {
-        transform.translation += velocity.0*STEP_SIZE + 0.5 * acceleration.0 * STEP_SIZE.powi(2);
-    }
+struct PlanetData
+{
+    //entity: Entity, - not includig this because I don't need to worry about the order of entities in the query changing up in the same frame.
+    position: Vec3,
+    velocity: Vec3,
+    acceleration: Vec3,
+    mass: f32,
 }
 
-fn calculate_forces(
-    ) {
-        for (other_transform,
-            other_entity,
-            _other_velocity,
-            _other_acceleration,
-            other_mass) in immutable_query.iter()
+pub fn planet_update(mut query: Query<(&mut Transform, &mut Velocity, &mut Acceleration, &Mass), With<Movable>>) {
+
+    let mut planet_states: Vec<PlanetData> = query.iter().map(|(p, v, a, m)| PlanetData{position: p.translation, velocity: v.0, acceleration: a.0, mass: m.0 }).collect();
+
+    planet_states = calculate_forces(planet_states); // might cause borrowing issues will fix momentarily.
+
+    for (i, (mut transform, mut velocity, mut acceleration, _)) in query.iter_mut().enumerate() {
+        *velocity = Velocity(planet_states[i].velocity);
+        *acceleration = Acceleration(planet_states[i].acceleration);
+        transform.translation += velocity.0 * STEP_SIZE + 0.5 * acceleration.0 * STEP_SIZE.powi(2);
+    }
+
+}
+
+fn calculate_forces(mut planet_states: Vec<PlanetData>) -> Vec<PlanetData>{
+            for i in 0..planet_states.len()
+            {
+                for j in 0..planet_states.len()
                 {
-                    let distance = other_transform.translation - this_transform.translation;
-                    let force = GRAVITATIONAL_CONSTANT * (this_mass.0 * other_mass.0)/(distance.length_squared());
-                    *this_acceleration = Acceleration(distance.normalize() * force/ this_mass.0);
-                    //I know multiplying and dividing by mass is redundant, just keeping it for clarity.
-                    *this_velocity = Velocity(this_velocity.0 + STEP_SIZE * this_acceleration.0);
+                    if i != j {
+
+                        let distance = planet_states[j].position - planet_states[i].position;
+                        let force = GRAVITATIONAL_CONSTANT * (planet_states[i].mass * planet_states[j].mass)/(distance.length_squared());
+                        planet_states[i].acceleration = distance.normalize() * force/planet_states[i].mass;
+                        planet_states[i].velocity = planet_states[i].velocity + STEP_SIZE * planet_states[i].acceleration;
+                    }
                 }
+            }
+            return planet_states;
     }

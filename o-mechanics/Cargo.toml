@@ -4,4 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bevy = "0.14.2"
+bevy = "0.16"
+bevy-fps-counter = "0.7.0"
+bevy_panorbit_camera = "0.26"
