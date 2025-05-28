@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use bevy::pbr::*;
 
 static GRAVITATIONAL_CONSTANT: f32 = 6.67430e-11;
 static STEP_SIZE: f32 = 1.0/160.0;
@@ -38,7 +37,7 @@ pub fn planet_setup(
         })),
         Transform::from_xyz(0.0, 0.0, 0.0),
         Movable,
-        Velocity(Vec3::ZERO),
+        Velocity(Vec3::X),
         Acceleration(Vec3::ZERO),
         Mass(1.0e11),
     ));
@@ -54,7 +53,7 @@ pub fn planet_setup(
     Transform::from_xyz(8.0, 0.0, 0.0),
     //Visibility::default(),
     Movable,
-    Velocity(Vec3::ZERO),
+    Velocity(Vec3::from([-1.0, 1.0, 1.0])),
     Acceleration(Vec3::ZERO),
     Mass(1.0e11),
     ));
@@ -109,3 +108,32 @@ fn calculate_forces(mut planet_states: Vec<PlanetData>) -> Vec<PlanetData>{
             }
             return planet_states;
     }
+
+/*
+The below code creates an ephemeris. This will eventually be modified
+to use chebyshev polynomials instead of interpolation between discrete
+points in time. I'm not yet sure if I'll be using a predetermined quantity
+of steps for the calculations, if I do I'll add it to the "universe_bus",
+current name for the entity that indexes the ephemeris for the display and holds
+the number of bodies being simulated. need to look into chrono crate.
+*/
+
+// Consider pre-allocation for speed, may be worth it. Can easily get a maximum
+// size estimate by using bottom limit for adaptive step.
+struct EphemerisEntry {
+    t: f64,
+    states: [PlanetData; 9], // must be changed whenever more bodies are added.
+}
+
+fn create_discrete_ephemeris(mut init_planet_states: Vec<PlanetData>) -> () {
+    
+}
+
+    // For play-back capabilities and trajectory optimization if
+    // I reach that point I'll have to implement an ephemeris.
+    // I should also potentially compare my ephemerides to JPL's
+    // to illustrate differences in accuracies.
+    // I will use JPL's method of translating state data into 
+    // a chebyshev series for every planet, I will decide on
+    // the contiguous time divisions after tinkering more with
+    // wisdom.

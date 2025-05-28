@@ -1,1 +1,0 @@
-(&mut bevy::prelude::Transform, bevy::prelude::Entity, &mut Velocity, &mut Acceleration, Mass)

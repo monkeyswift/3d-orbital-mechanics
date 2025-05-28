@@ -1,0 +1,10 @@
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\libbevy_utils-356c80606fb8a917.rmeta: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\synccell.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\syncunsafecell.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\default.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\once.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\parallel_queue.rs
+
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\bevy_utils-356c80606fb8a917.d: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\synccell.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\syncunsafecell.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\default.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\once.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\parallel_queue.rs
+
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\lib.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\synccell.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\syncunsafecell.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\default.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\once.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_utils-0.16.0\src\parallel_queue.rs:

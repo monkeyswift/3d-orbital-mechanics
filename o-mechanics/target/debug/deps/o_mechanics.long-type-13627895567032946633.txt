@@ -1,1 +1,0 @@
-for<'a, 'b, 'c> fn(bevy::prelude::Query<'a, 'b, &'c mut bevy::prelude::Transform, bevy::prelude::Entity>) {planet_logic::planet_update}

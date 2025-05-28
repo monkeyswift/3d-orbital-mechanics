@@ -1,0 +1,11 @@
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\libbevy_egui-52f3312393f40995.rmeta: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui_node.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\helpers.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\input.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\output.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\render_systems.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui.wgsl
+
+C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\deps\bevy_egui-52f3312393f40995.d: C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\lib.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui_node.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\helpers.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\input.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\output.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\render_systems.rs C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui.wgsl
+
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\lib.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui_node.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\helpers.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\input.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\output.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\render_systems.rs:
+C:\Users\omerc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bevy_egui-0.34.1\src\egui.wgsl:

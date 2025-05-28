@@ -1,1 +1,0 @@
-C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\target\debug\o-mechanics.exe: C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\src\main.rs C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\src\planet_logic.rs C:\Users\omerc\OneDrive\Documents\GitHub\3d-orbital-mechanics\o-mechanics\src\user_interface.rs
